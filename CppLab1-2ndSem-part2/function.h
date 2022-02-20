@@ -1,24 +1,33 @@
 #pragma once
 #include <vector>
 #include <list>
+#include <iterator>
 #include <iostream>
+#include <fstream>
+#include <algorithm>
 
-using std::vector;
-using std::list;
-using std::cout;
-using std::string;
+
+
+void fillFromFile(std::list<std::string>& strings, std::ifstream& input);
+
+void printList(std::list<std::string>& strings);
 
 template <typename T>
-vector<T> ListToVector(list<T> list)
+void ListToVector(std::list<T>& list, std::vector<T>& vector)
 {
-	vector<T> ListCopy;
-	for (T elements : list)
-		ListCopy.push_back(elements);
-	return ListCopy;
+	std::copy(list.begin(), list.end(), std::inserter(vector,vector.begin()));
 }
 
-int countWords(list<string> words , char letter);
+int countWords(std::list<std::string>& words , char letter);
 
-void reverse(list<string> strings);
+void printReverse(std::list<std::string>& strings);
 
-void deleteElements(list<string> &strings, char letter);
+std::list<std::string> findByFirstElementLambda(std::list<std::string>& strings, char letter);
+
+std::list<std::string> findByFirstElementFunctor(std::list<std::string>& strings, char letter);
+
+void deleteElements(std::list<std::string>& strings, char letter);
+
+void printUniqueAlphabetically(std::ifstream& input);
+
+void duplicateCount(std::ifstream& input);
