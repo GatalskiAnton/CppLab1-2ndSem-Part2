@@ -14,7 +14,7 @@ public:
 
 void fillFromFile(std::list<std::string>& strings, std::ifstream& input)
 {
-	std::copy(std::istream_iterator<std::string> (input) , std::istream_iterator<std::string> (), std::back_inserter(strings));
+	std::copy(std::istream_iterator<std::string>(input), std::istream_iterator<std::string>(), std::back_inserter(strings));
 }
 
 void printList(std::list<std::string>& strings)
@@ -53,8 +53,8 @@ void printReverse(std::list<std::string>& strings)
 
 std::list<std::string> findByFirstElementLambda(std::list<std::string>& strings, char letter)
 {
-	static std::list<std::string> result;
-	for_each(strings.begin(), strings.end(), [letter](std::string word)
+	std::list<std::string> result;
+	for_each(strings.begin(), strings.end(), [&result,letter](std::string word)
 		{
 			if (word[0] == letter)
 				result.push_back(word);
@@ -64,18 +64,24 @@ std::list<std::string> findByFirstElementLambda(std::list<std::string>& strings,
 
 std::list<std::string> findByFirstElementFunctor(std::list<std::string>& strings, char letter)
 {
-	std::list < std::string > result;
-	Initial initial(letter);
+	 std::list < std::string > result;
+	strings.sort();
+	std::list<std::string>::iterator it1 = std::find_if(strings.begin(), strings.end(), Initial(letter));
+	std::list<std::string>::iterator it2 = std::find_if_not(strings.begin(), strings.end(), Initial(letter));	
+	std::for_each(it1, it2, [&result](std::string word)
+		{
+			result.push_back(word);
+		});
 	return result;
 }
 
-void deleteElements(std::list<std::string> &strings, char letter)
+void deleteElements(std::list<std::string>& strings, char letter)
 {
 	std::list<std::string> resultStrings;
 	for (std::string string : strings)
 	{
 		if (string[0] != letter);
-			resultStrings.push_front(string);
+		resultStrings.push_front(string);
 	}
 	strings = resultStrings;
 }
@@ -97,14 +103,14 @@ void duplicateCount(std::ifstream& input)
 	strings_list.sort();
 	std::vector<std::string> strings_vector;
 	ListToVector(strings_list, strings_vector);
-	int first_pos = 0; 
+	int first_pos = 0;
 	std::vector<int> count;
 	for (int i = 0; i < strings_vector.size(); i++)
 	{
 		if (strings_vector[i] != strings_vector[first_pos] || i == strings_vector.size() - 1)
 		{
 			count.push_back(i - first_pos);
-			first_pos = i ;
+			first_pos = i;
 		}
 	}
 	strings_list.unique();
@@ -115,7 +121,7 @@ void duplicateCount(std::ifstream& input)
 		{
 			std::cout << string << " - " << count[i] << "\n";
 		}
-		else 
+		else
 		{
 			std::cout << string << " - " << count[i] + 1 << "\n";
 		}

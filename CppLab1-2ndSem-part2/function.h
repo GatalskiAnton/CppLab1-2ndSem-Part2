@@ -15,10 +15,10 @@ void printList(std::list<std::string>& strings);
 template <typename T>
 void ListToVector(std::list<T>& list, std::vector<T>& vector)
 {
-	std::copy(list.begin(), list.end(), std::inserter(vector,vector.begin()));
+	std::copy(list.begin(), list.end(), std::inserter(vector, vector.begin()));
 }
 
-int countWords(std::list<std::string>& words , char letter);
+int countWords(std::list<std::string>& words, char letter);
 
 void printReverse(std::list<std::string>& strings);
 
