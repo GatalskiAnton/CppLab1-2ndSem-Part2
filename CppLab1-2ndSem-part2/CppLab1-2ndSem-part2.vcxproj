@@ -141,9 +141,12 @@
   <ItemGroup>
     <ClCompile Include="CppLab1-2ndSem-part2.cpp" />
     <ClCompile Include="function.cpp" />
+    <ClCompile Include="Human.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Complex.h" />
     <ClInclude Include="function.h" />
+    <ClInclude Include="Human.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

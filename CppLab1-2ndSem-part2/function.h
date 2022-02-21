@@ -7,7 +7,6 @@
 #include <algorithm>
 
 
-
 void fillFromFile(std::list<std::string>& strings, std::ifstream& input);
 
 void printList(std::list<std::string>& strings);
@@ -31,3 +30,7 @@ void deleteElements(std::list<std::string>& strings, char letter);
 void printUniqueAlphabetically(std::ifstream& input);
 
 void duplicateCount(std::ifstream& input);
+
+void sortContainer();
+
+void keySort();

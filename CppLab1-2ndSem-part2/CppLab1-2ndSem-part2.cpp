@@ -14,5 +14,6 @@ int main()
 	for (int i = 0; i < word.size(); i++)
 		std::cout << word[i] << "\n";
 	duplicateCount(input);*/
+	keySort();
 	return 0;
 }

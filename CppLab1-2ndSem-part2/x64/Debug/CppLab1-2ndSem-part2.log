@@ -1,5 +1,5 @@
-﻿  CppLab1-2ndSem-part2.cpp
+﻿  Human.cpp
   function.cpp
-C:\Users\ag629\source\repos\CppLab1-2ndSem-Part2\CppLab1-2ndSem-part2\function.cpp(83,27): warning C4390: ";": обнаружен пустой контролируемый оператор; это правильно?
+C:\Users\ag629\source\repos\CppLab1-2ndSem-part2\CppLab1-2ndSem-part2\function.cpp(84,27): warning C4390: ";": обнаружен пустой контролируемый оператор; это правильно?
   Создание кода...
-  CppLab1-2ndSem-part2.vcxproj -> C:\Users\ag629\source\repos\CppLab1-2ndSem-Part2\x64\Debug\CppLab1-2ndSem-part2.exe
+  CppLab1-2ndSem-part2.vcxproj -> C:\Users\ag629\source\repos\CppLab1-2ndSem-part2\x64\Debug\CppLab1-2ndSem-part2.exe

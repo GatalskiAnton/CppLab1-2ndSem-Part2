@@ -1,5 +1,6 @@
 #include "function.h"
-
+#include "Complex.h"
+#include "Human.h"
 class Initial
 {
 private:
@@ -54,7 +55,7 @@ void printReverse(std::list<std::string>& strings)
 std::list<std::string> findByFirstElementLambda(std::list<std::string>& strings, char letter)
 {
 	std::list<std::string> result;
-	for_each(strings.begin(), strings.end(), [&result,letter](std::string word)
+	for_each(strings.begin(), strings.end(), [&result, letter](std::string word)
 		{
 			if (word[0] == letter)
 				result.push_back(word);
@@ -64,10 +65,10 @@ std::list<std::string> findByFirstElementLambda(std::list<std::string>& strings,
 
 std::list<std::string> findByFirstElementFunctor(std::list<std::string>& strings, char letter)
 {
-	 std::list < std::string > result;
+	std::list < std::string > result;
 	strings.sort();
 	std::list<std::string>::iterator it1 = std::find_if(strings.begin(), strings.end(), Initial(letter));
-	std::list<std::string>::iterator it2 = std::find_if_not(strings.begin(), strings.end(), Initial(letter));	
+	std::list<std::string>::iterator it2 = std::find_if_not(strings.begin(), strings.end(), Initial(letter));
 	std::for_each(it1, it2, [&result](std::string word)
 		{
 			result.push_back(word);
@@ -127,4 +128,37 @@ void duplicateCount(std::ifstream& input)
 		}
 		++i;
 	}
+}
+
+void sortContainer()
+{
+	Complex A(3, 5);
+	Complex B(2, 4);
+	Complex C(1, 3);
+	std::list<Complex> complex{ A,B,C };
+	complex.sort();//default
+	complex.sort([](Complex c1, Complex c2) //using lambda
+		{
+			return c1.getiPart() < c1.getiPart();
+		});
+}
+
+void keySort()
+{
+	Human people1(25, 12, 26);
+	Human people2(13, 15, 60);
+	Human people3(54, 1, 13);
+	std::list<Human> people {people1, people2, people3};
+	people.sort([](Human h1, Human h2)//one key
+		{
+			return h1.getStrength() < h2.getStrength();
+		});
+	people.sort([](Human h1, Human h2)//two keys
+		{
+			return h1.getStrength() + h1.getAgility() < h2.getStrength() + h2.getAgility();
+		});
+	people.sort([](Human h1, Human h2)//thee keys
+		{
+			return h1.getStrength() + h1.getAgility() + h1.getIntelligence() < h2.getStrength() + h2.getAgility() + h2.getIntelligence();
+		});
 }
