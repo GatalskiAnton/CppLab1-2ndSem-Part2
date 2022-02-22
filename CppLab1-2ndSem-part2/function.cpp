@@ -137,7 +137,7 @@ void sortContainer()
 	Complex C(1, 3);
 	std::list<Complex> complex{ A,B,C };
 	complex.sort();//default
-	complex.sort([](Complex c1, Complex c2) //using lambda
+	complex.sort([](Complex c1, Complex c2)//using lambda
 		{
 			return c1.getiPart() < c1.getiPart();
 		});
@@ -148,16 +148,16 @@ void keySort()
 	Human people1(25, 12, 26);
 	Human people2(13, 15, 60);
 	Human people3(54, 1, 13);
-	std::list<Human> people {people1, people2, people3};
-	people.sort([](Human h1, Human h2)//one key
+	std::vector<Human> people {people1, people2, people3};
+	std::sort(people.begin(),people.end(),[](Human h1, Human h2)//one key
 		{
 			return h1.getStrength() < h2.getStrength();
 		});
-	people.sort([](Human h1, Human h2)//two keys
+	std::sort(people.begin(), people.end(),[](Human h1, Human h2)//two keys
 		{
 			return h1.getStrength() + h1.getAgility() < h2.getStrength() + h2.getAgility();
 		});
-	people.sort([](Human h1, Human h2)//thee keys
+	std::sort(people.begin(), people.end(),[](Human h1, Human h2)//thee keys
 		{
 			return h1.getStrength() + h1.getAgility() + h1.getIntelligence() < h2.getStrength() + h2.getAgility() + h2.getIntelligence();
 		});
